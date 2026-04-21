@@ -36,9 +36,9 @@ def get_data_path(filename):
 
 TRAIN_FILE = get_data_path("Hourly_2010_2015.csv")
 TEST_FILE  = get_data_path("Hourly_2020_2025.csv")
-WEIGHTS_FILE = get_data_path("pissm_saved_weights.pth")
+WEIGHTS_FILE = get_data_path("PI-SSM_saved_weights.pth")
 
-PLOT_DIR = "PISSM_Publishable_Plots"
+PLOT_DIR = "PI-SSM_Publishable_Plots"
 os.makedirs(PLOT_DIR, exist_ok=True)
 
 # ──────────────────────────────────────────────────────────────────────────────
@@ -334,3 +334,4 @@ print(f"\n{'='*75}")
 print(f" 🎉 Multi-Year Evaluation Complete!")
 print(f" 📂 3 Sets of High-Resolution Publication Plots saved to: {PLOT_DIR}/")
 print(f"{'='*75}\n")
+

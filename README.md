@@ -2,7 +2,7 @@
 
 <img src="https://img.shields.io/badge/%F0%9F%94%AD-Cross--Attention%20AI-8B5CF6?style=for-the-badge&labelColor=1a1a2e" alt="Cross-Attention AI"/>
 
-# Physics-Informed Cross-Attention Networks (PISSM-CA)
+# Physics-Informed Cross-Attention Networks (PI-SSM-CA)
 
 ### 🔬 *Bridging Atmospheric Physics and Deep Learning via Dual-Attention Solar Forecasting* 🔬
 
@@ -23,11 +23,14 @@
 
 </div>
 
+> [!IMPORTANT]
+> **Implementation Note**: This repository contains the core architecture and settings as described in the associated research paper. However, some code structures and experimental configurations have been slightly adjusted to facilitate educational study, modification, and independent testing. The codebase will be fully synchronized with the exact methodology presented in the manuscript upon the paper's final formal publication.
+
 ---
 
 ## 🎯 The Core Innovation
 
-> Standard attention treats all features equally. **PISSM-CA** introduces a **Dual-Attention pipeline** — first learning *temporal* relevance via Self-Attention, then injecting *physical constraints* via Cross-Attention with Solar Zenith Angle (SZA) and Clearness Index (KT).
+> Standard attention treats all features equally. **PI-SSM-CA** introduces a **Dual-Attention pipeline** — first learning *temporal* relevance via Self-Attention, then injecting *physical constraints* via Cross-Attention with Solar Zenith Angle (SZA) and Clearness Index (KT).
 
 This creates a model that doesn't just learn patterns — it **learns physics-aware patterns**.
 
@@ -106,19 +109,19 @@ This creates a model that doesn't just learn patterns — it **learns physics-aw
 ## 📂 Repository Structure
 
 ```
-📦 PISSM-CrossAttention-Solar/
+📦 PI-SSM-CrossAttention-Solar/
 │
 ├── 📁 training_code/
-│   └── 🧠 pissm_cross_attention.py       # Full 5-layer architecture + training
+│   └── 🧠 pi_ssm_cross_attention.py       # Full 5-layer architecture + training
 │
 ├── 📁 evaluation_code/
-│   └── 📊 pissm_multi_year_test.py        # Multi-year evaluation pipeline
+│   └── 📊 pi_ssm_multi_year_test.py        # Multi-year evaluation pipeline
 │
 ├── 📁 training_data/
 │   ├── 📊 Hourly_2010_2015.csv            # NASA POWER hourly (training)
 │   └── 📊 Hourly_2020_2025.csv            # NASA POWER hourly (testing)
 │
-├── 📄 PISSM_CrossAttention_Paper.docx     # Research paper
+├── 📄 PI-SSM_CrossAttention_Paper.docx     # Research paper
 ├── 📋 requirements.txt
 └── 📖 README.md
 ```
@@ -129,20 +132,20 @@ This creates a model that doesn't just learn patterns — it **learns physics-aw
 
 ```bash
 # Clone & setup
-git clone https://github.com/Marco9249/PISSM-CrossAttention-Solar.git
-cd PISSM-CrossAttention-Solar
+git clone https://github.com/Marco9249/PI-SSM-CrossAttention-Solar.git
+cd PI-SSM-CrossAttention-Solar
 pip install -r requirements.txt
 
 # Train the model (uses Hourly_2010_2015.csv)
-python training_code/pissm_cross_attention.py
+python training_code/pi_ssm_cross_attention.py
 
 # Multi-year evaluation (2020-2025)
-python evaluation_code/pissm_multi_year_test.py
+python evaluation_code/pi_ssm_multi_year_test.py
 
 # Outputs:
-#   → pissm_saved_weights.pth (model checkpoint)
-#   → pissm_forecast_results.png
-#   → pissm_training_curves.png
+#   → pi_ssm_saved_weights.pth (model checkpoint)
+#   → pi_ssm_forecast_results.png
+#   → pi_ssm_training_curves.png
 ```
 
 ---
@@ -170,8 +173,8 @@ python evaluation_code/pissm_multi_year_test.py
 | # | Paper | Repository | arXiv |
 |:-:|:------|:----------:|:-----:|
 | 1 | Physics-Guided CNN-BiLSTM Solar Forecast | [![Repo](https://img.shields.io/badge/-Repo-181717?style=flat-square&logo=github)](https://github.com/Marco9249/Physics-Guided-CNN-BiLSTM-Solar) | [![arXiv](https://img.shields.io/badge/-2604.13455-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2604.13455) |
-| 2 | Physics-Informed State Space Model (PISSM) | [![Repo](https://img.shields.io/badge/-Repo-181717?style=flat-square&logo=github)](https://github.com/Marco9249/PISSM-Solar-Forecasting) | [![arXiv](https://img.shields.io/badge/-2604.11807-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2604.11807) |
-| **3** | **PISSM Cross-Attention** *(this repo)* 🌟 | [![Repo](https://img.shields.io/badge/-Repo-181717?style=flat-square&logo=github)](https://github.com/Marco9249/PISSM-CrossAttention-Solar) | *Coming Soon* |
+| 2 | Physics-Informed State Space Model (PI-SSM) | [![Repo](https://img.shields.io/badge/-Repo-181717?style=flat-square&logo=github)](https://github.com/Marco9249/PI-SSM-Solar-Forecasting) | [![arXiv](https://img.shields.io/badge/-2604.11807-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2604.11807) |
+| **3** | **PI-SSM Cross-Attention** *(this repo)* 🌟 | [![Repo](https://img.shields.io/badge/-Repo-181717?style=flat-square&logo=github)](https://github.com/Marco9249/PI-SSM-CrossAttention-Solar) | *Coming Soon* |
 | 4 | Thermodynamic Liquid Manifold Networks | [![Repo](https://img.shields.io/badge/-Repo-181717?style=flat-square&logo=github)](https://github.com/Marco9249/TLMN-Thermodynamic-Solar-Microgrids) | [![arXiv](https://img.shields.io/badge/-2604.11909-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2604.11909) |
 | 5 | Asymmetric-Loss Industrial RUL Prediction | [![Repo](https://img.shields.io/badge/-Repo-181717?style=flat-square&logo=github)](https://github.com/Marco9249/Industrial-RUL-Prediction-Architecture) | [![arXiv](https://img.shields.io/badge/-2604.13459-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2604.13459) |
 | 🎮 | Interactive 3D Architecture Visualization | [![Repo](https://img.shields.io/badge/-Repo-181717?style=flat-square&logo=github)](https://github.com/Marco9249/PI-Hybrid-3D-Viz) | — |
@@ -183,7 +186,7 @@ python evaluation_code/pissm_multi_year_test.py
 ## 📖 Citation
 
 ```bibtex
-@misc{abdullah2026pissmca,
+@misc{abdullah2026PI-SSMca,
   title   = {Physics-Guided Cross-Attention Networks for Reliable Solar
              Irradiance Forecasting in Off-Grid Systems},
   author  = {Mohammed Ezzeldin Babiker Abdullah},
@@ -210,3 +213,4 @@ python evaluation_code/pissm_multi_year_test.py
 © 2026 Mohammed Ezzeldin Babiker Abdullah — All rights reserved.
 
 </div>
+

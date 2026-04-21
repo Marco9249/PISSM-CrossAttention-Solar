@@ -1,6 +1,6 @@
 """
 ================================================================================
-Physics-Informed State Space Model (PISSM) for Solar Irradiance Forecasting
+Physics-Informed State Space Model (PI-SSM) for Solar Irradiance Forecasting
 ================================================================================
 
 Author : Prepared by: Eng. Mohammed Izzaldeen Babeker Abdullah
@@ -448,7 +448,7 @@ model = PhysicsInformedCrossAttention(
 total_params = sum(p.numel() for p in model.parameters())
 trainable_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
 print(f"\n{'='*60}")
-print(f"  PISSM Model Architecture Summary")
+print(f"  PI-SSM Model Architecture Summary")
 print(f"{'='*60}")
 print(model)
 print(f"\n  Total parameters     : {total_params:,}")
@@ -480,7 +480,7 @@ def compute_mae(preds, targets):
 
 
 print(f"{'='*70}")
-print(f"  Training PISSM — {NUM_EPOCHS} Epochs, LR={LEARNING_RATE}")
+print(f"  Training PI-SSM — {NUM_EPOCHS} Epochs, LR={LEARNING_RATE}")
 print(f"{'='*70}")
 
 train_losses = []
@@ -541,8 +541,8 @@ print(f"\n{'='*70}")
 print(f"  Training Complete!")
 print(f"{'='*70}\n")
 # 💾 حفظ الأوزان هنا في النهاية )
-torch.save(model.state_dict(), "pissm_saved_weights.pth")
-print(f"\n[INFO] Model weights saved successfully to: pissm_saved_weights.pth")
+torch.save(model.state_dict(), "PI-SSM_saved_weights.pth")
+print(f"\n[INFO] Model weights saved successfully to: PI-SSM_saved_weights.pth")
 # ==============================================================================
 # SECTION 8 — INVERSE TRANSFORM & FINAL EVALUATION
 # ==============================================================================
@@ -593,7 +593,7 @@ def plot_predictions(targets, predictions, rmse, mae, num_points=500):
     fig, axes = plt.subplots(2, 1, figsize=(16, 10),
                              gridspec_kw={"height_ratios": [3, 1]})
     fig.suptitle(
-        "Physics-Informed State Space Model (PISSM)\n"
+        "Physics-Informed State Space Model (PI-SSM)\n"
         "Solar Irradiance Forecasting — Test Set Performance",
         fontsize=16, fontweight="bold", y=0.98
     )
@@ -609,7 +609,7 @@ def plot_predictions(targets, predictions, rmse, mae, num_points=500):
     ax1.plot(idx, t, color="#1a73e8", linewidth=1.2, alpha=0.85,
              label="Actual (Ground Truth)")
     ax1.plot(idx, p, color="#ea4335", linewidth=1.0, alpha=0.80,
-             linestyle="--", label="Predicted (PISSM)")
+             linestyle="--", label="Predicted (PI-SSM)")
     ax1.fill_between(idx, t, p, alpha=0.15, color="#fbbc04")
     ax1.set_ylabel("Solar Irradiance (Wh/m²)", fontsize=13)
     ax1.set_title(
@@ -635,10 +635,10 @@ def plot_predictions(targets, predictions, rmse, mae, num_points=500):
     ax2.grid(True, alpha=0.3)
     
     plt.tight_layout(rect=[0, 0, 1, 0.95])
-    plt.savefig("pissm_forecast_results.png", dpi=200, bbox_inches="tight",
+    plt.savefig("PI-SSM_forecast_results.png", dpi=200, bbox_inches="tight",
                 facecolor="white")
     plt.show()
-    print("[INFO] Plot saved to:  pissm_forecast_results.png")
+    print("[INFO] Plot saved to:  PI-SSM_forecast_results.png")
 
 
 def plot_training_curves(train_losses, val_losses):
@@ -658,15 +658,15 @@ def plot_training_curves(train_losses, val_losses):
     
     ax.set_xlabel("Epoch", fontsize=13)
     ax.set_ylabel("RMSE (Normalized)", fontsize=13)
-    ax.set_title("PISSM Training Convergence", fontsize=14, fontweight="bold")
+    ax.set_title("PI-SSM Training Convergence", fontsize=14, fontweight="bold")
     ax.legend(fontsize=12)
     ax.grid(True, alpha=0.3)
     
     plt.tight_layout()
-    plt.savefig("pissm_training_curves.png", dpi=200, bbox_inches="tight",
+    plt.savefig("PI-SSM_training_curves.png", dpi=200, bbox_inches="tight",
                 facecolor="white")
     plt.show()
-    print("[INFO] Plot saved to:  pissm_training_curves.png")
+    print("[INFO] Plot saved to:  PI-SSM_training_curves.png")
 
 
 # Generate plots
@@ -675,5 +675,6 @@ plot_predictions(targets_original, preds_original, final_rmse, final_mae,
                  num_points=500)
 
 print("\n" + "=" * 60)
-print("  PISSM Pipeline Complete — All outputs generated.")
+print("  PI-SSM Pipeline Complete — All outputs generated.")
 print("=" * 60)
+
